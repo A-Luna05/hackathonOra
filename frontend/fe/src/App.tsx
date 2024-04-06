@@ -1,12 +1,10 @@
-import { useState } from "react";
-import {Routes, Route, Navigate} from "react-router-dom"
+import { Routes, Route, Navigate } from "react-router-dom";
 import "./App.css";
 
-import Nav from "./components/Nav"
-import LogIn from "./pages/LogIn"
-import Feed from "./pages/Feed"
-import SignUp from "./pages/SignUp"
-import Create from "./pages/Create"
+import LogIn from "./pages/LogIn";
+import Feed from "./pages/Feed";
+import SignUp from "./pages/SignUp";
+import { LoginProvider } from "./loginContext";
 
 import firebase, { initializeApp } from "firebase/app";
 
@@ -23,27 +21,17 @@ function App() {
 
   const app = initializeApp(firebaseConfig);
 
-  const [loggedIn, setLoggedIn] = useState(false);
-  const [signingUp, setSigningUp] = useState(false);
-
   return (
     <>
-      <h1>Envision</h1>
-      <Nav />
-
-      <Routes>
-        <Route path='/login' element={<LogIn/>}></Route>
-        <Route path='/signup' element={<SignUp/>}></Route>
-      </Routes>
-      {!loggedIn && !signingUp ? (
-        <LogIn />
-      ) : signingUp ? (
-        <SignUp />
-      ) : (
-        <Create />
-      )}
-
-      
+      <LoginProvider>
+        <h1>Envision</h1>
+        <Routes>
+          <Route path="/login" element={<LogIn />}></Route>
+          <Route path="/signup" element={<SignUp />}></Route>
+          <Route path="/feed" element={<Feed />}></Route>
+          <Route path="/" element={<Navigate to="/login" />}></Route>
+        </Routes>
+      </LoginProvider>
     </>
   );
 }

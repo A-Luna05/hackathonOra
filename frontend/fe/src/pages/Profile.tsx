@@ -1,9 +1,11 @@
-function Profile(){
-    return (
-        <>
-        Profile
-        </>
-    )
+import Nav from "../components/Nav";
+function Profile() {
+  return (
+    <>
+      <Nav />
+      Profile
+    </>
+  );
 }
 
-export default Profile
+export default Profile;
