@@ -3,7 +3,13 @@ import openai
 from flask import Flask, jsonify, request
 from openai import OpenAI
 from flask_cors import CORS
+import firebase_admin
+from firebase_admin import credentials, firestore, auth
 
+cred = credentials.Certificate('./serviceKey.json')
+firebase_admin.initialize_app(cred)
+
+db = firestore.client()
 
 
 app = Flask(__name__)
@@ -22,8 +28,29 @@ def test():
     message = "Hello, World!"
     return jsonify(message)
 
+@app.route('/posts', methods=['GET'])
+def posts():
+    posts_ref = db.collection('posts')
+    docs = posts_ref.get()
+
+    posts = []
+    for doc in docs:
+        posts.append(doc.to_dict())
+    return jsonify(posts)
+
+@app.route('/create-account', methods=['POST'])
+def create_account():
+    data = request.get_json()
+    email = data['email']
+    password = data['password']
+    user = auth.create_user(
+        email=email,
+        password=password
+    )
+    return jsonify({'uid': user.uid}), 201
+
 @app.route('/gen', methods=['POST'])
-def home():
+def gen():
     data = request.get_json()
     userPrompt = data['prompt']
     response = openai.images.generate(
@@ -35,6 +62,12 @@ def home():
     )
     
     image_url = response.data[0].url
+    doc_ref = db.collection('posts').document()
+    doc_ref.set({
+    'prompt': userPrompt,
+    'image_url': image_url,
+    'user': 'testUser'
+})
     return jsonify(image_url)
 
 if __name__ == '__main__':
