@@ -6,7 +6,7 @@ import Feed from "./pages/Feed";
 import SignUp from "./pages/SignUp";
 import { LoginProvider } from "./loginContext";
 
-import firebase, { initializeApp } from "firebase/app";
+import { initializeApp } from "firebase/app";
 
 function App() {
   const firebaseConfig = {
@@ -19,7 +19,7 @@ function App() {
     measurementId: "G-KS6N0V3RPW",
   };
 
-  const app = initializeApp(firebaseConfig);
+  initializeApp(firebaseConfig);
 
   return (
     <>

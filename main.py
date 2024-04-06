@@ -53,6 +53,7 @@ def create_account():
 def gen():
     data = request.get_json()
     userPrompt = data['prompt']
+    userName = data['user']
     response = openai.images.generate(
     model="dall-e-2",
     prompt = userPrompt,
@@ -66,7 +67,7 @@ def gen():
     doc_ref.set({
     'prompt': userPrompt,
     'image_url': image_url,
-    'user': 'testUser'
+    'user': userName
 })
     return jsonify(image_url)
 
