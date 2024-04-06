@@ -5,6 +5,7 @@ from openai import OpenAI
 from flask_cors import CORS
 import firebase_admin
 from firebase_admin import credentials, firestore, auth
+from datetime import datetime
 
 cred = credentials.Certificate('./serviceKey.json')
 firebase_admin.initialize_app(cred)
@@ -61,6 +62,17 @@ def gen():
     quality="standard",
     n=1,
     )
+    now = datetime.now()
+
+    # Create a new document in the 'posts' collection with the current date and time
+    doc_ref = db.collection('posts').document()
+    doc_ref.set({
+        'prompt': userPrompt,
+        'image_url': image_url,
+        'user': userName,
+        'timestamp': now
+    })
+
     
     image_url = response.data[0].url
     doc_ref = db.collection('posts').document()
