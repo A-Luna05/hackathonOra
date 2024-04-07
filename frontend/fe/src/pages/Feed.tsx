@@ -73,6 +73,7 @@ function Feed() {
             marginLeft: "auto",
             marginRight: "auto",
             marginBottom: "2vh",
+            borderRadius: "20px"
           }}
         >
           <CardActionArea>
@@ -89,18 +90,20 @@ function Feed() {
                 display: "block",
                 marginLeft: "auto",
                 marginRight: "auto",
+                borderRadius: "20px"
               }}
             />
-            <CardContent>
+            <CardContent style={{backgroundColor:"#242424"}}>
               <Typography
                 gutterBottom
                 variant="h5"
                 component="h2"
-                style={{ textAlign: "left", color: "blue" }}
+                style={{ textAlign: "left", color: "white", backgroundColor:"#242424",fontWeight:"bold"}}
               >
                 {post.user.split("@")[0]}
               </Typography>
-              <Typography variant="body2" color="textSecondary" component="p">
+              <Typography variant="body2" color="textSecondary" component="p"
+              style={{backgroundColor: "#242424", color:"white", fontWeight:"bold",textAlign:"left"}}>
                 {post.prompt}
               </Typography>
             </CardContent>
