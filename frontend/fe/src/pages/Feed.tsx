@@ -98,7 +98,6 @@ function Feed() {
           <CardActionArea>
             <CardMedia
               image={post.image_url}
-              title="Contemplative Reptile"
               style={{
                 height: 512,
                 width: 512,

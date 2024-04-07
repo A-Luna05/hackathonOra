@@ -8,7 +8,6 @@ function SignUp() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [retypePassword, setRetypePassword] = useState("");
-  const [signingUp, setSigningUp] = useState(false);
 
   const createAccount = async () => {
     if (password !== retypePassword) {
@@ -21,7 +20,10 @@ function SignUp() {
       username,
       password
     );
-    console.log(result);
+    if (result) {
+      alert("Account created!");
+      navigator("/login");
+    }
   };
 
   return (
