@@ -9,8 +9,10 @@ function Create(props: CreateProps) {
   const { user } = useContext(LoginContext);
   const [prompt, setPrompt] = useState("");
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const generateImage = async () => {
+    setLoading(true);
     const response = await fetch("http://localhost:5000/gen", {
       method: "POST",
       headers: {
@@ -21,6 +23,7 @@ function Create(props: CreateProps) {
 
     const result = await response.json();
     setData(result);
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -29,33 +32,39 @@ function Create(props: CreateProps) {
 
   return (
     <>
-      <div>
-        <h2>What was your dream?</h2>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <textarea
+      {!loading ? (
+        <div>
+          <h2>What was your dream?</h2>
+          <div
             style={{
-              width: "484px",
-              minHeight: "80px",
-              fontSize: "20px",
-              padding: "10px",
-              borderRadius: "10px",
-              backgroundColor: "#1a1a1a",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
             }}
-            onChange={(e) => setPrompt(e.target.value)}
-          />
-          <button onClick={generateImage} style={{ width: "10vw" }}>
-            Generate Image
-          </button>
+          >
+            <textarea
+              style={{
+                width: "484px",
+                minHeight: "80px",
+                fontSize: "20px",
+                padding: "10px",
+                borderRadius: "10px",
+                backgroundColor: "#1a1a1a",
+              }}
+              onChange={(e) => setPrompt(e.target.value)}
+            />
+            <button onClick={generateImage} style={{ width: "10vw" }}>
+              Generate Image
+            </button>
+          </div>
+          <br />
         </div>
-        <br />
-      </div>
+      ) : (
+        <div>
+          <h2>Envisioning Dream...</h2>
+        </div>
+      )}
     </>
   );
 }
