@@ -56,6 +56,24 @@ def create_account():
     )
     return jsonify({'uid': user.uid}), 201
 
+# @app.route('/like', methods=['POST'])
+# def like():
+#     data = request.get_json()
+#     prompt = data['prompt']
+#     user_id = data['email']
+#     post_ref = db.collection('posts')
+#     query_ref = post_ref.where('prompt', '==', prompt)
+#     docs = query_ref.stream()
+#     for doc in docs:
+#         post_ref = doc.reference
+#         post_data = doc.to_dict()
+#     print(post_data)
+#     #likes = post_data.get('likes', [])
+#     # if user_id not in likes:
+#     #     likes.append(user_id)
+#     # post_ref.update({'likes': likes})
+#     return jsonify("")
+
 @app.route('/gen', methods=['POST'])
 def gen():
     data = request.get_json()
@@ -86,7 +104,8 @@ def gen():
         'prompt': userPrompt,
         'image_url': new_image_url,
         'user': userName,
-        'timestamp': now
+        'timestamp': now,
+        'likes' : []
     })
 
     
