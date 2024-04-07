@@ -32,7 +32,7 @@ function LogIn() {
         <div className="layer"></div>
       </div>
       <div>
-        <h2>Start Sharing</h2>
+        <h2>Share your dreams</h2>
         <input
           type="text"
           placeholder="Username"
