@@ -47,7 +47,14 @@ function Feed() {
   }, []);
 
   return (
-    <>
+    <div>
+      <div className="bg" style={{ opacity: "45%" }}></div>
+      <div className="star-field">
+        {/* <div className="layer"></div>
+        <div className="layer"></div>
+        <div className="layer"></div> */}
+      </div>
+
       <div
         style={{
           position: "absolute",
@@ -111,7 +118,7 @@ function Feed() {
         </Card>
       ))}
       <br />
-    </>
+    </div>
   );
 }
 

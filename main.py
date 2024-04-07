@@ -65,7 +65,7 @@ def gen():
     print(userName)
     response = openai.images.generate(
     model="dall-e-2",
-    prompt = userPrompt + " drawn in a cartoon, family friendly style for a demograhpic of 8-13 year olds.",
+    prompt = userPrompt + "generate this as a scene in a family friendly, android by google style.",
     size="1024x1024",
     quality="standard",
     n=1,

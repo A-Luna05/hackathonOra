@@ -3,8 +3,7 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { LoginContext } from "../loginContext";
 import { useNavigate } from "react-router-dom";
 
-import "./Login.css"
-
+import "./Login.css";
 
 function LogIn() {
   const [username, setUsername] = useState("");
@@ -22,10 +21,16 @@ function LogIn() {
       navigator("/feed");
     }
     //setLoggedIn(true);
-  }
+  };
 
   return (
     <>
+      <div className="bg" style={{ opacity: "45%" }}></div>
+      <div className="star-field">
+        <div className="layer"></div>
+        <div className="layer"></div>
+        <div className="layer"></div>
+      </div>
       <div>
         <h2>Start Sharing</h2>
         <input

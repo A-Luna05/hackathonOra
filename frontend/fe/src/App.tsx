@@ -28,6 +28,7 @@ function App() {
         <div>
           <img src={logo} alt="logo" className="envsn" />
         </div>
+
         <Routes>
           <Route path="/login" element={<LogIn />}></Route>
           <Route path="/signup" element={<SignUp />}></Route>

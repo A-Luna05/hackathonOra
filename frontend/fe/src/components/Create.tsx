@@ -39,9 +39,15 @@ function Create(props: CreateProps) {
             alignItems: "center",
           }}
         >
-          <input
-            style={{ width: "484px" }}
-            type="text"
+          <textarea
+            style={{
+              width: "484px",
+              minHeight: "80px",
+              fontSize: "20px",
+              padding: "10px",
+              borderRadius: "10px",
+              backgroundColor: "#1a1a1a",
+            }}
             onChange={(e) => setPrompt(e.target.value)}
           />
           <button onClick={generateImage} style={{ width: "10vw" }}>

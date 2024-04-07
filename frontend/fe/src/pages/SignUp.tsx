@@ -26,6 +26,12 @@ function SignUp() {
 
   return (
     <>
+      <div className="bg" style={{ opacity: "45%" }}></div>
+      <div className="star-field">
+        <div className="layer"></div>
+        <div className="layer"></div>
+        <div className="layer"></div>
+      </div>
       <div>
         <h2>Sign Up</h2>
         <input
