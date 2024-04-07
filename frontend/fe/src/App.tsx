@@ -1,6 +1,7 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import "./App.css";
 
+import logo from '/Users/justinabella/Desktop/hackathonOra/envsn-high-resolution-logo-transparent.png';
 import LogIn from "./pages/LogIn";
 import Feed from "./pages/Feed";
 import SignUp from "./pages/SignUp";
@@ -24,7 +25,9 @@ function App() {
   return (
     <>
       <LoginProvider>
-        <h1>Envision</h1>
+        <div>
+           <img src={logo} alt='logo' className="envsn"/>
+        </div>
         <Routes>
           <Route path="/login" element={<LogIn />}></Route>
           <Route path="/signup" element={<SignUp />}></Route>

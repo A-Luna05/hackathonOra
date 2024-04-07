@@ -3,6 +3,9 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { LoginContext } from "../loginContext";
 import { useNavigate } from "react-router-dom";
 
+import "./Login.css"
+
+
 function LogIn() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -19,17 +22,18 @@ function LogIn() {
       navigator("/feed");
     }
     //setLoggedIn(true);
-  };
+  }
 
   return (
     <>
       <div>
-        <h2>Log In</h2>
+        <h2>Start Sharing</h2>
         <input
           type="text"
           placeholder="Username"
           onChange={(e) => setUsername(e.target.value)}
         />
+
         <br />
         <input
           type="password"

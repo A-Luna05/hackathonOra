@@ -1,0 +1,21 @@
+input{
+    border:none;
+    outline:none;
+    display:inline-block;
+    height: 50px;
+    vertical-align:middle;
+    position:relative;
+    bottom:14px;
+    right:9px;
+    border-radius:22px;
+    width:220px;
+    box-sizing:border-box;
+    padding: 5px 18px; 
+    margin-bottom: 10px;
+    width: 300px;
+  }
+button{
+    height: 50px;
+    width: 100px;
+    margin: 10px;
+}
