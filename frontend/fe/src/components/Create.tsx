@@ -1,13 +1,14 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { LoginContext } from "../loginContext";
 
-function Create() {
+interface CreateProps {
+  getPosts: () => void;
+}
+
+function Create(props: CreateProps) {
   const { user } = useContext(LoginContext);
   const [prompt, setPrompt] = useState("");
-
-  const [image, setImage] = useState(
-    "https://cdn.mos.cms.futurecdn.net/3n8tRry6fYg7sNyhFDPQwR-1200-80.jpg"
-  );
+  const [data, setData] = useState([]);
 
   const generateImage = async () => {
     const response = await fetch("http://localhost:5000/gen", {
@@ -18,22 +19,31 @@ function Create() {
       body: JSON.stringify({ prompt, user: user }), // Send the prompt in the body of the request
     });
 
-    const data = await response.json();
-    console.log(data);
-    setImage(data);
+    const result = await response.json();
+    setData(result);
   };
+
+  useEffect(() => {
+    props.getPosts();
+  }, [data]);
 
   return (
     <>
       <div>
         <h2>What was your dream?</h2>
-        <input type="text" onChange={(e) => setPrompt(e.target.value)} />
-        <br />
-        <button onClick={generateImage}>Generate Image</button>
-        <br />
-        {image && (
-          <img src={image} style={{ width: 300 }} alt="Generated Image" />
-        )}
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <input type="text" onChange={(e) => setPrompt(e.target.value)} />
+          <button onClick={generateImage} style={{ width: "10vw" }}>
+            Generate Image
+          </button>
+        </div>
         <br />
       </div>
     </>

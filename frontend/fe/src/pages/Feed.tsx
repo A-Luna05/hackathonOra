@@ -12,6 +12,10 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { useState } from "react";
 
+interface CreateProps {
+  getPosts: () => void;
+}
+
 interface Post {
   user: string;
   prompt: string;
@@ -39,17 +43,25 @@ function Feed() {
     }
   }, [user.email, setUser]);
 
+  useEffect(() => {
+    getPosts();
+  }, []);
+
   return (
     <>
       <Nav />
       <h1>Welcome, {user.email}</h1>
-      <Create />
-      <br />
-      <button onClick={getPosts}>Get Posts</button>
-      <br />
+      <Create getPosts={getPosts} />
 
       {posts.map((post: Post) => (
-        <Card style={{ width: 512, marginLeft: "auto", marginRight: "auto" }}>
+        <Card
+          style={{
+            width: 512,
+            height: "auto",
+            marginLeft: "auto",
+            marginRight: "auto",
+          }}
+        >
           <CardActionArea>
             <CardMedia
               image={post.image_url}
@@ -57,6 +69,7 @@ function Feed() {
               style={{
                 height: 512,
                 width: 512,
+                objectFit: "cover",
                 scale: "auto",
                 justifyContent: "center",
                 alignItems: "center",
@@ -73,21 +86,13 @@ function Feed() {
                 component="h2"
                 style={{ textAlign: "left", color: "blue" }}
               >
-                @{post.user}
+                {post.user}
               </Typography>
               <Typography variant="body2" color="textSecondary" component="p">
                 {post.prompt}
               </Typography>
             </CardContent>
           </CardActionArea>
-          <CardActions>
-            <Button size="small" color="primary">
-              Share
-            </Button>
-            <Button size="small" color="primary">
-              Learn More
-            </Button>
-          </CardActions>
         </Card>
       ))}
       <br />

@@ -1,7 +1,6 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import "./App.css";
 
-import logo from '/Users/justinabella/Desktop/hackathonOra/envsn-high-resolution-logo-transparent.png';
 import LogIn from "./pages/LogIn";
 import Feed from "./pages/Feed";
 import SignUp from "./pages/SignUp";
@@ -10,6 +9,7 @@ import { LoginProvider } from "./loginContext";
 import { initializeApp } from "firebase/app";
 
 function App() {
+  const logo = "/envsn-high-resolution-logo-transparent.png";
   const firebaseConfig = {
     apiKey: "AIzaSyDLdK7IBnVxrVZe8L7OqPM4sfS0VOmFY-k",
     authDomain: "envision-db762.firebaseapp.com",
@@ -26,7 +26,7 @@ function App() {
     <>
       <LoginProvider>
         <div>
-           <img src={logo} alt='logo' className="envsn"/>
+          <img src={logo} alt="logo" className="envsn" />
         </div>
         <Routes>
           <Route path="/login" element={<LogIn />}></Route>
