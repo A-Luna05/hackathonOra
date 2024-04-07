@@ -7,6 +7,8 @@ import firebase_admin
 from firebase_admin import credentials, firestore, auth, storage
 from datetime import datetime
 import requests
+from google.cloud.firestore import Query
+
 
 
 cred = credentials.Certificate('./serviceKey.json')
@@ -33,7 +35,8 @@ def test():
 
 @app.route('/posts', methods=['GET'])
 def posts():
-    posts_ref = db.collection('posts')
+    posts_ref = db.collection('posts').order_by('timestamp', direction=Query.DESCENDING)
+
     docs = posts_ref.get()
 
     posts = []

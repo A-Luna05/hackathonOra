@@ -1,5 +1,4 @@
 import Create from "../components/Create";
-import Nav from "../components/Nav";
 import { useContext, useEffect } from "react";
 import { LoginContext } from "../loginContext";
 import { useNavigate } from "react-router-dom";
@@ -49,8 +48,21 @@ function Feed() {
 
   return (
     <>
-      <Nav />
-      <h1>Welcome, {user.email}</h1>
+      <div
+        style={{
+          position: "absolute",
+          top: 0,
+          right: 10,
+          display: "flex",
+          flexDirection: "row",
+          alignItems: "center",
+        }}
+      >
+        <h3>{user.email}</h3>
+        <button onClick={handleLogOut} style={{ width: "6vw" }}>
+          Log Out
+        </button>
+      </div>
       <Create getPosts={getPosts} />
 
       {posts.map((post: Post) => (
@@ -60,6 +72,7 @@ function Feed() {
             height: "auto",
             marginLeft: "auto",
             marginRight: "auto",
+            marginBottom: "2vh",
           }}
         >
           <CardActionArea>
@@ -76,7 +89,6 @@ function Feed() {
                 display: "block",
                 marginLeft: "auto",
                 marginRight: "auto",
-                borderRadius: 10,
               }}
             />
             <CardContent>
@@ -96,8 +108,6 @@ function Feed() {
         </Card>
       ))}
       <br />
-
-      <button onClick={handleLogOut}>Log Out</button>
     </>
   );
 }

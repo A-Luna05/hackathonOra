@@ -39,7 +39,11 @@ function Create(props: CreateProps) {
             alignItems: "center",
           }}
         >
-          <input type="text" onChange={(e) => setPrompt(e.target.value)} />
+          <input
+            style={{ width: "484px" }}
+            type="text"
+            onChange={(e) => setPrompt(e.target.value)}
+          />
           <button onClick={generateImage} style={{ width: "10vw" }}>
             Generate Image
           </button>
