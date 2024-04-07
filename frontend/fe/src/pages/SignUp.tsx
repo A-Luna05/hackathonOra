@@ -52,8 +52,7 @@ function SignUp() {
           onChange={(e) => setRetypePassword(e.target.value)}
         />
         <br />
-        <button onClick={() => navigator("/login")}>Log In</button>
-        <button onClick={createAccount}>Sign Up</button>
+        <button onClick={createAccount}>Create Account</button>
       </div>
     </>
   );
