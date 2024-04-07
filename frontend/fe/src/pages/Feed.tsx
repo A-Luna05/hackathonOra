@@ -58,7 +58,7 @@ function Feed() {
           alignItems: "center",
         }}
       >
-        <h3>{user.email}</h3>
+        <h3>{user.email.split("@")[0]}</h3>
         <button onClick={handleLogOut} style={{ width: "6vw" }}>
           Log Out
         </button>
@@ -98,7 +98,7 @@ function Feed() {
                 component="h2"
                 style={{ textAlign: "left", color: "blue" }}
               >
-                {post.user}
+                {post.user.split("@")[0]}
               </Typography>
               <Typography variant="body2" color="textSecondary" component="p">
                 {post.prompt}

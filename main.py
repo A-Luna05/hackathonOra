@@ -84,7 +84,7 @@ def gen():
     doc_ref = db.collection('posts').document()
     doc_ref.set({
         'prompt': userPrompt,
-        'image_url': image_url,
+        'image_url': new_image_url,
         'user': userName,
         'timestamp': now
     })
