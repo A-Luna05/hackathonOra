@@ -8,6 +8,10 @@ from firebase_admin import credentials, firestore, auth, storage
 from datetime import datetime
 import requests
 from google.cloud.firestore import Query
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 
 
@@ -20,7 +24,7 @@ db = firestore.client()
 app = Flask(__name__)
 CORS(app)
 
-openai.api_key = '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'
+openai.api_key = os.getenv('openapikey')
 bucket = storage.bucket('envision-db762.appspot.com')
 
 @app.route('/')
