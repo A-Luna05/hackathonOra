@@ -4,10 +4,11 @@ Enter the realm of ENVSN, where the boundless creativity of AI meets the deep co
 ### Update as of 4/8/2024
 Removed API and Service Keys, Will not run unless the user has internal API Keys.
 
+To use website: https://envsn.netlify.app
+
 # Happy Path Demo of ENVSN
 
 https://github.com/A-Luna05/hackathonOra/assets/93148569/2441ce02-feea-4638-9d09-f47f9afb93c4
-
 
 ## HOW TO RUN:
 # CLONE REPO
